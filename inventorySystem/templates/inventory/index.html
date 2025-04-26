@@ -1,0 +1,47 @@
+{% extends '../base.html' %}
+{% load static %}
+{% block content %}
+<main>
+{% if request.user.is_authenticated %}
+<div class="card text-center">
+  <div class="card-body" style="margin-top: 5rem;">
+    <h5 class="card-title">Welcome {{ user.username }}!</h5>
+    <h4 class="card-title">Lets Get Started</h4>
+    <a href="{% url 'inventory_list' %}" class="btn btn-primary m-2">Inventory List</a>
+    <a href="{% url 'add_inventory' %}" class="btn btn-secondary">Add Inventory</a>
+  </div>
+</div>
+
+<div class="card text-center mx-auto">
+  <img src="{% static 'media/dashboard.jpg'%}" class="card-img-top" alt="dashboard">
+  <div class="card-body">
+    <h5 class="card-title">Your Graphical Dashboard Awaits!</h5>
+    <p class="card-text">Visualize your companies sales trends</p>
+    <a href="{% url 'dashboard' %}" class="btn btn-primary">View Dashboard</a>
+  </div>
+</div>
+
+{% else %}
+
+<div class="card text-center">
+    <div class="card-body" style="margin-top: 5rem;">
+      <h5 class="card-title">Welcome to our</h5>
+      <h4 class="card-title">Inventory Management System</h4>
+      <p class="card-text">Log In to your account to get started and manage your inventory.</p>
+      <p class="card-text">Don't have an account? Sign Up.</p>
+      <a href="{% url 'login' %}" class="btn btn-primary">Log In</a>
+      <a href="#" class="btn btn-secondary">Sign Up</a>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top: 5rem;" >
+    <div class="card-body">
+      <blockquote class="blockquote mb-0 text-center">
+        <p>"Leadership is inspiring people. Management is keeping the trains running on time."</p>
+        <footer class="blockquote-footer">Andy Dunn <cite title="Source Title">BrainyQuote</cite></footer>
+      </blockquote>
+    </div>
+  </div>
+  {% endif %}
+</main>
+{% endblock %}
